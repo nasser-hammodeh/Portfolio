@@ -1,0 +1,142 @@
+﻿@model UniversitiesDto
+@{ Layout = "";}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        #logo {
+            color: white;
+            font-size: 40px;
+            margin-right: 9px;
+            margin-left: 9px;
+        }
+        body {
+            font-family: Courier New, Courier, monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px white;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #dc3545;
+            border-radius: 10px;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #c32232;
+            }
+    </style>
+</head>
+<body>
+    <div style=" width: 100%; background-color: #a92330;color:white;height: 118px; position: fixed; box-shadow: 0 10px 7px 4px #a92330;z-index:99;">
+        <div style="margin-left:2%;margin-top:2%;margin-bottom:-15px;">
+            <span id="logo" class="fa fa-pinterest-p"> <span id="logo" class="fa fa-spinner"> <span id="logo" class="fa fa-registered"> <span id="logo" class="fa fa-tumblr"> <span id="logo" class="fa fa-foursquare"> <span id="logo" class="fa fa-circle-o"> <span id="logo"> L<span id="logo" class="fa fa-info-circle"> <span id="logo" class="fa fa-sun-o"></span> </span> </span> </span> </span> </span> </span> <span> </span> </span> </span></span>
+            <br /> <span style="margin-left:143px;font-family:cursive!important"> Best portfolio builder.<sup class="fa fa-copyright"></sup></span>
+        </div>
+        <div style="float: right;margin-right: 5%;font-family: cursive;">
+            <a style="text-decoration:none!important;color:white!important;margin-right:10px;" href="UserInfo">User informations</a>
+            <a style="text-decoration:none!important;color:white!important;margin-right:10px;" href="GetUniversities">Universities</a>
+            <a style="text-decoration:none!important;color:white!important;margin-right:10px;" href="GetSkills">Skills</a>
+            <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Logout">Logout</a>
+        </div>
+    </div>
+    <h3 style="visibility:hidden;">--</h3>
+    <h3 style="text-align:center;margin-top:8%;"></h3>
+    <div style="margin-left:5%;margin-right:5%;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <fieldset style="margin-top:20%;">
+                        <legend>New university</legend>
+                        <label>University</label>
+                        <form action="AddUniversity" method="post">
+                            @Html.TextBoxFor(x => x.UniversityName, new { @class = "form-control" })<br />
+                            <button type="submit" class="btn btn-success">Add university</button>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <h3 style="text-align:center;">Universities</h3>
+                <table class="table table-bordered" style="text-align:center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th width="15%" height="63px">Id</th>
+                            <th width="65%">University name</th>
+                            <th width="20%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var U in (List<Portfolio.Data.University>)ViewBag.Universities)
+                            {
+                                <tr>
+                                    <td width="15%" height="63px">@U.UniversityId</td>
+                                    <td width="65%">@U.UniversityName</td>
+                                    <td width="20%"><a href="DeleteUniversity/@U.UniversityId" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <fieldset style="margin-top:20%;">
+                        <legend>New major</legend>
+                        <label>University degree</label>
+                        <form action="AddDegree" method="post">
+                            @Html.TextBoxFor(x => x.DegreeName, new { @class = "form-control" })<br />
+                            <button type="submit" class="btn btn-success">Add major</button>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-8">
+                <h3 style="text-align:center;">Major</h3>
+                <table class="table table-bordered" style="text-align:center">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th width="15%">Id</th>
+                            <th width="65%">Degree name</th>
+                            <th width="20%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var D in (List<Portfolio.Data.Degree>)ViewBag.Degrees)
+                            {
+                                <tr>
+                                    <td width="92px" height="63px">@D.DegreeId</td>
+                                    <td>@D.DegreeName</td>
+                                    <td><a href="DeleteDegree/@D.DegreeId" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+</html>

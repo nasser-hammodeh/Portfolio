@@ -1,0 +1,1008 @@
+﻿@{Layout = "";}
+@model UserDto
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#subbtn").click(function () {
+                if ($("#major2").val() == '')
+                    $("#University2").remove();
+                if ($("#major3").val() == '')
+                    $("#University3").remove();
+                if ($("#proname2").val() == '')
+                    $("#Project2").remove();
+                if ($("#proname3").val() == '')
+                    $("#Project3").remove();
+            });
+        });
+        $(document).ready(function () {
+            $("#AddUniversity2").click(function () {
+                $("#University2").slideToggle("slow");
+                if ($("#University2").is(":visible")) {
+                    $("#uni2").prop('required', true);
+                    $("#degree2").prop('required', true);
+                    $("#major2").prop('required', true);
+                }
+                else {
+                    $("#uni2").prop('required', false);
+                    $("#degree2").prop('required', false);
+                    $("#major2").prop('required', false);
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#AddUniversity2").click(function () {
+                $("#AddUniversity2").toggleClass("fa-times-circle");
+            });
+        });
+        $(document).ready(function () {
+            $("#AddUniversity3").click(function () {
+                $("#University3").slideToggle("slow");
+                if ($("#University3").is(":visible")) {
+                    $("#uni3").prop('required', true);
+                    $("#degree3").prop('required', true);
+                    $("#major3").prop('required', true);
+                }
+                else {
+                    $("#uni3").prop('required', false);
+                    $("#degree3").prop('required', false);
+                    $("#major3").prop('required', false);
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#AddUniversity3").click(function () {
+                $("#AddUniversity3").toggleClass("fa-times-circle");
+            });
+        });
+        $(document).ready(function () {
+            $("#AddProject2").click(function () {
+                $("#Project2").slideToggle("slow");
+                if ($("#Project2").is(":visible")) {
+                    $("#proname2").prop('required', true);
+                    $("#prodes2").prop('required', true);
+                    $("#proimg2").prop('required', true);
+                    $("#profile2").prop('required', true);
+                }
+                else {
+                    $("#proname2").prop('required', false);
+                    $("#prodes2").prop('required', false);
+                    $("#proimg2").prop('required', false);
+                    $("#profile2").prop('required', false);
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#AddProject2").click(function () {
+                $("#AddProject2").toggleClass("fa-times-circle");
+            });
+        });
+        $(document).ready(function () {
+            $("#AddProject3").click(function () {
+                $("#Project3").slideToggle("slow");
+                if ($("#Project3").is(":visible")) {
+                    $("#proname3").prop('required', true);
+                    $("#prodes3").prop('required', true);
+                    $("#proimg3").prop('required', true);
+                    $("#profile3").prop('required', true);
+
+                }
+                else {
+                    $("#proname3").prop('required', false);
+                    $("#prodes3").prop('required', false);
+                    $("#proimg3").prop('required', false);
+                    $("#profile3").prop('required', false);
+                }
+            });
+        });
+        $(document).ready(function () {
+            $("#AddProject3").click(function () {
+                $("#AddProject3").toggleClass("fa-times-circle");
+            });
+        });
+        $(document).ready(function () {
+            $("#subbtn").click(function () {
+                //university 2
+                if ($("#University2").is(":visible")) {
+                    $("#uni2").prop('required', true);
+                    $("#degree2").prop('required', true);
+                    $("#major2").prop('required', true);
+                }
+                else {
+                    $("#uni2").prop('required', false);
+                    $("#degree2").prop('required', false);
+                    $("#major2").prop('required', false);
+                }
+                //university 3
+                if ($("#University3").is(":visible")) {
+                    $("#uni3").prop('required', true);
+                    $("#degree3").prop('required', true);
+                    $("#major3").prop('required', true);
+                }
+                else {
+                    $("#uni3").prop('required', false);
+                    $("#degree3").prop('required', false);
+                    $("#major3").prop('required', false);
+                }
+                //project 2
+                if ($("#Project2").is(":visible")) {
+                    $("#proname2").prop('required', true);
+                    $("#prodes2").prop('required', true);
+                    $("#proimg2").prop('required', true);
+                    $("#profile2").prop('required', true);
+                }
+                else {
+                    $("#proname2").prop('required', false);
+                    $("#prodes2").prop('required', false);
+                    $("#proimg2").prop('required', false);
+                    $("#profile2").prop('required', false);
+                }
+                //project 3
+                if ($("#Project3").is(":visible")) {
+                    $("#proname3").prop('required', true);
+                    $("#prodes3").prop('required', true);
+                    $("#proimg3").prop('required', true);
+                    $("#profile3").prop('required', true);
+                }
+                else {
+                    $("#proname3").prop('required', false);
+                    $("#prodes3").prop('required', false);
+                    $("#proimg3").prop('required', false);
+                    $("#profile3").prop('required', false);
+                }
+            });
+        });
+        function checkAge() {
+            var d = new Date();
+            var dateYear = document.querySelector("#form > fieldset:nth-child(1) > div:nth-child(3) > div:nth-child(1) > input").valueAsDate.getFullYear();
+            debugger;
+            if (dateYear > (d.getFullYear() - 10)) {
+                document.querySelector("#subbtn").disabled = true;
+            }
+            else {
+                document.querySelector("#subbtn").disabled = false;
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: cursive;
+            margin-bottom: 0px;
+        }
+
+        label {
+            color: #495057
+        }
+
+        i {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px !important;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+
+        #fa {
+            padding: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+            color: white;
+        }
+
+            #fa:hover {
+                opacity: 0.7;
+            }
+
+        #fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        #fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        #fa-linkedin {
+            background: #007bb5;
+            color: white;
+        }
+
+        #fa-instagram {
+            background: #C13584;
+            color: white;
+        }
+
+        #logo {
+            font-size: 40px;
+            margin-right: 9px;
+            margin-left: 9px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px white;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #dc3545;
+            border-radius: 10px;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #c32232;
+            }
+        .autocomplete {
+            position: relative;
+            display: inline-block;
+        }
+
+        .autocomplete-items #addressdiv {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .autocomplete-active {
+            background-color: DodgerBlue !important;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="row" style="margin-bottom:0;margin-right:0">
+        <div class="col-lg-4" style="background-color:#a92330;color:white;text-align:center;">
+            <div style="margin-top:20%;margin-bottom:79%">
+                <div style="margin-left:6%;">
+                    <span id="logo" class="fa fa-pinterest-p"><span id="logo" class="fa fa-spinner"><span id="logo" class="fa fa-registered"><span id="logo" class="fa fa-tumblr"><span id="logo" class="fa fa-foursquare"><span id="logo" class="fa fa-circle-o"><span id="logo">L<span id="logo" class="fa fa-info-circle"><span id="logo" class="fa fa-sun-o"></span></span></span></span></span></span><span></span></span></span></span>
+                    Best portfolio builder.<sup class="fa fa-copyright"></sup>
+                </div>
+            </div>
+            <h1 style="margin-top:-52%;margin-bottom:12pc;">Create</h1>
+            <div style="margin-bottom:25%;margin-left:6%;position:fixed;z-index:99">
+                <div style="text-align:center;">
+                    <a href="https://www.facebook.com/nasserhamodeh" id="fa" class="fa fa-facebook"></a><a href="https://www.linkedin.com/in/nasser-hammodeh-0b74b319a" id="fa" class="fa fa-linkedin"></a><a href="https://www.twitter.com/nasser_hammodeh" id="fa" class="fa fa-twitter"></a><a href="https://www.instagram.com/nasser_hammodeh" id="fa" class="fa fa-instagram"></a>
+                </div>
+                <h4 style="text-align:center;margin-top:3%;">Contact us</h4>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="container">
+                <form action="AddUser" method="post" id="form" enctype="multipart/form-data">
+                    <fieldset>
+                        <legend>Personal Informations <span id="edu" style="color:#a92330;font-size:15px;">*</span></legend>
+                        <div class="row">
+                            @Html.HiddenFor(x => x.UserId)
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.FirstName)<br />
+                                @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control", required = "required" })
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.SecondName)<br />
+                                @Html.TextBoxFor(x => x.SecondName, new { @class = "form-control", required = "required" })
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.LastName)<br />
+                                @Html.TextBoxFor(x => x.LastName, new { @class = "form-control", required = "required" })
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.DateofBirth)<br>
+                                <input type="date" name="DateofBirth" onchange="checkAge()" required class="form-control">
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.MobileNumber)<br>
+                                @Html.TextBoxFor(x => x.MobileNumber, new { @class = "form-control", required = "required", placeHolder = "00962 70 000 0000" })
+                            </div>
+                            <div class="col-sm-3" style="margin-top: 40px;">
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="Gender" required value="Male">Male
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="Gender" required value="Female">Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.Address)<br>
+                            <div id="addressdiv" class="autocomplete">
+                                @Html.TextBoxFor(x => x.Address, new { @class = "form-control", required = "required", id = "address" })
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.About)<br>
+                            @Html.TextAreaFor(x => x.About, new { @class = "form-control", required = "required" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.Vision)<br>
+                            @Html.TextAreaFor(x => x.Vision, new { @class = "form-control", required = "required" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.PortfolioEmail)<br>
+                            @Html.TextBoxFor(x => x.PortfolioEmail, new { @class = "form-control", required = "required" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.CVFile)<br>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="CVFile" required>
+                                <label class="custom-file-label"></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.PersonalImageFile)<br>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="PersonalImageFile" required>
+                                <label class="custom-file-label"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <fieldset>
+                        <legend>Social media <span id="edu" style="color:#a92330;font-size:15px;">*</span></legend>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.FacebookURL)<br>
+                                <div id="facebookdiv" class="autocomplete">
+                                    @Html.TextBoxFor(x => x.FacebookURL, new { @class = "form-control", required = "required", id = "facebook" })
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.LinkedInURL)<br>
+                                <div id="linkedindiv" class="autocomplete">
+                                    @Html.TextBoxFor(x => x.LinkedInURL, new { @class = "form-control", required = "required", id = "linkedin" })
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.TwitterURL)<br>
+                                <div id="twitterdiv" class="autocomplete">
+                                    @Html.TextBoxFor(x => x.TwitterURL, new { @class = "form-control", required = "required", id = "twitter" })
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Educations <span id="edu" style="color:#a92330;font-size:15px;">*</span></legend>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label>University name</label><br>
+                                <select name="UniversityDto[0].UniversityId" required class="selectpicker">
+                                    @{
+                                        foreach (var University in (List<Portfolio.Data.University>)ViewBag.universities)
+                                        {
+                                            <option id="un2" value="@University.UniversityId">@University.UniversityName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Degree</label><br>
+                                <select name="UniversityDto[0].DegreeId" required class="selectpicker">
+                                    @{
+                                        foreach (var degree in (List<Portfolio.Data.Degree>)ViewBag.degrees)
+                                        {
+                                            <option value="@degree.DegreeId">@degree.DegreeName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.UniversityDto[0].MajorName)<br>
+                                @Html.TextBoxFor(x => x.UniversityDto[0].MajorName, new { @class = "form-control", required = "required" })
+                            </div>
+                            <div class="col-sm-1" style="margin-top:3%;text-align:center;">
+                                <span id="AddUniversity2" style="color:#a92330;font-size:40px;" class="fa fa-plus-circle"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row" id="University2" style="display:none;">
+                        <div class="col-sm-3">
+                            <label>University name</label><br>
+                            <select name="UniversityDto[1].UniversityId" id="uni2" class="selectpicker">
+                                @{
+                                    foreach (var University in (List<Portfolio.Data.University>)ViewBag.universities)
+                                    {
+                                        <option id="un1" value="@University.UniversityId">@University.UniversityName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>Degree</label><br>
+                            <select name="UniversityDto[1].DegreeId" id="degree2" class="selectpicker">
+                                @{
+                                    foreach (var degree in (List<Portfolio.Data.Degree>)ViewBag.degrees)
+                                    {
+                                        <option value="@degree.DegreeId">@degree.DegreeName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.UniversityDto[1].MajorName)<br>
+                            @Html.TextBoxFor(x => x.UniversityDto[1].MajorName, new { @class = "form-control", id = "major2" })
+                        </div>
+                        <div class="col-sm-1" style="margin-top:3%;text-align:center;">
+                            <span id="AddUniversity3" style="color:#a92330;font-size:40px;" class="fa fa-plus-circle"></span>
+                        </div>
+                    </div>
+                    <div class="row" id="University3" style="display:none;">
+                        <div class="col-sm-3">
+                            <label>University name</label><br>
+                            <select name="UniversityDto[2].UniversityId" id="uni3" class="selectpicker">
+                                @{
+                                    foreach (var University in (List<Portfolio.Data.University>)ViewBag.universities)
+                                    {
+                                        <option value="@University.UniversityId">@University.UniversityName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label>Degree</label><br>
+                            <select name="UniversityDto[2].DegreeId" id="degree3" class="selectpicker">
+                                @{
+                                    foreach (var degree in (List<Portfolio.Data.Degree>)ViewBag.degrees)
+                                    {
+                                        <option value="@degree.DegreeId">@degree.DegreeName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.UniversityDto[2].MajorName)<br>
+                            @Html.TextBoxFor(x => x.UniversityDto[2].MajorName, new { @class = "form-control", id = "major3" })
+                        </div>
+                    </div>
+                    <fieldset>
+                        <legend>Skills <span id="edu" style="color:#a92330;font-size:15px;">*</span></legend>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label>Interpersonal skills</label><br>
+                                <select name="InterpersonalSkillsDto" required class="selectpicker" multiple>
+                                    @{
+                                        foreach (var PS in (List<Portfolio.Data.InterpersonalSkill>)ViewBag.interpersonalSkills)
+                                        {
+                                            <option value="@PS.InterpersonalSkillId">@PS.InterpersonalSkillName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-3">
+                                <label>Technical skills</label><br>
+                                <select name="technicalSkillsDto" required class="selectpicker" multiple>
+                                    @{
+                                        foreach (var TS in (List<Portfolio.Data.TechnicalSkill>)ViewBag.technicalSkills)
+                                        {
+                                            <option value="@TS.TechnicalSkillId">@TS.TechnicalSkillName</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Projects <span id="edu" style="color:#a92330;font-size:15px;">*</span></legend>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.ProjectDto[0].ProjectName)<br>
+                                @Html.TextBoxFor(x => x.ProjectDto[0].ProjectName, new { @class = "form-control", required = "required" })
+                            </div>
+                            <div class="col-sm-3">
+                                @Html.LabelFor(x => x.ProjectDto[0].ProjectDescription)<br>
+                                @Html.TextBoxFor(x => x.ProjectDto[0].ProjectDescription, new { @class = "form-control", required = "required" })
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.LabelFor(x => x.ProjectDto[0].ProjectImageFile)<br>
+                                <div class="custom-file">
+                                    <input type="file" name="ProjectDto[0].ProjectImageFile" required class="custom-file-input" />
+                                    <label class="custom-file-label"></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                @Html.LabelFor(x => x.ProjectDto[0].ProjectFile)<br>
+                                <div class="custom-file">
+                                    <input type="file" name="ProjectDto[0].ProjectFile" required class="custom-file-input" />
+                                    <label class="custom-file-label"></label>
+                                </div>
+                            </div>
+                            <div class="col-sm-2" style="margin-top:3%;text-align:center;">
+                                <span id="AddProject2" style="color:#a92330;font-size:40px;" class="fa fa-plus-circle"></span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row" id="Project2" style="display:none">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.ProjectDto[1].ProjectName)<br>
+                            @Html.TextBoxFor(x => x.ProjectDto[1].ProjectName, new { @class = "form-control", id = "proname2" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.ProjectDto[1].ProjectDescription)<br>
+                            @Html.TextBoxFor(x => x.ProjectDto[1].ProjectDescription, new { @class = "form-control", id = "prodes2" })
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.LabelFor(x => x.ProjectDto[1].ProjectImageFile)<br>
+                            <div class="custom-file">
+                                <input type="file" name="ProjectDto[1].ProjectImageFile" id="proimg2" class="custom-file-input" />
+                                <label class="custom-file-label"></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.LabelFor(x => x.ProjectDto[1].ProjectFile)<br>
+                            <div class="custom-file">
+                                <input type="file" name="ProjectDto[1].ProjectFile" id="profile2" class="custom-file-input" />
+                                <label class="custom-file-label"></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2" style="margin-top:3%;text-align:center;">
+                            <span id="AddProject3" style="color:#a92330;font-size:40px;" class="fa fa-plus-circle"></span>
+                        </div>
+                    </div>
+                    <div class="row" id="Project3" style="display:none">
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.ProjectDto[2].ProjectName)<br>
+                            @Html.TextBoxFor(x => x.ProjectDto[2].ProjectName, new { @class = "form-control", id = "proname3" })
+                        </div>
+                        <div class="col-sm-3">
+                            @Html.LabelFor(x => x.ProjectDto[2].ProjectDescription)<br>
+                            @Html.TextBoxFor(x => x.ProjectDto[2].ProjectDescription, new { @class = "form-control", id = "prodes3" })
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.LabelFor(x => x.ProjectDto[2].ProjectImageFile)<br>
+                            <div class="custom-file">
+                                <input type="file" name="ProjectDto[2].ProjectImageFile" id="proimg3" class="custom-file-input" />
+                                <label class="custom-file-label"></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            @Html.LabelFor(x => x.ProjectDto[2].ProjectFile)<br>
+                            <div class="custom-file">
+                                <input type="file" name="ProjectDto[2].ProjectFile" id="profile3" class="custom-file-input" />
+                                <label class="custom-file-label"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----------------------------bottom projects-------------------------------------->
+                    <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" id="subbtn" type="submit">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/PortfolioStyle/js/JavaScript.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <script>
+        $('select').selectpicker();
+    </script>
+    <script>
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+        function autocomplete(inp, arr) {
+           var currentFocus;
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                this.parentNode.appendChild(a);
+                for (i = 0; i < arr.length; i++) {
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        b = document.createElement("DIV");
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        b.addEventListener("click", function (e) {
+                            inp.value = this.getElementsById("address")[0].value;
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsById("addressdiv");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        /*An array containing all the country names in the world:*/
+        var countries = ["Amman", "Az-zarqa", "Irbid", "Aqaba", "Mafraq", "as-Salt", "Jerash", "Ajloun", "Ma'an", "Karak", "Tafilah", "Madaba"];
+
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("address"), countries);
+//----------------------------------------------------------------------------------------------------------------------------------------
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsById("facebook")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsById("facebookdiv");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        /*An array containing all the country names in the world:*/
+        var facebooklink = ["Https://www.facebook.com/"];
+
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("facebook"), facebooklink);
+        //twitter------------------------------------------------------------------------------------------------------------------------------------
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsById("twitter")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsById("twitterdiv");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        /*An array containing all the country names in the world:*/
+        var twitterlink = ['Https://www.twitter.com/'];
+
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("twitter"), twitterlink);
+        //linked-in-------------------------------------------------------------------------------------------------------------------
+        function autocomplete(inp, arr) {
+            /*the autocomplete function takes two arguments,
+            the text field element and an array of possible autocompleted values:*/
+            var currentFocus;
+            /*execute a function when someone writes in the text field:*/
+            inp.addEventListener("input", function (e) {
+                var a, b, i, val = this.value;
+                /*close any already open lists of autocompleted values*/
+                closeAllLists();
+                if (!val) { return false; }
+                currentFocus = -1;
+                /*create a DIV element that will contain the items (values):*/
+                a = document.createElement("DIV");
+                a.setAttribute("id", this.id + "autocomplete-list");
+                a.setAttribute("class", "autocomplete-items");
+                /*append the DIV element as a child of the autocomplete container:*/
+                this.parentNode.appendChild(a);
+                /*for each item in the array...*/
+                for (i = 0; i < arr.length; i++) {
+                    /*check if the item starts with the same letters as the text field value:*/
+                    if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                        /*create a DIV element for each matching element:*/
+                        b = document.createElement("DIV");
+                        /*make the matching letters bold:*/
+                        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+                        b.innerHTML += arr[i].substr(val.length);
+                        /*insert a input field that will hold the current array item's value:*/
+                        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                        /*execute a function when someone clicks on the item value (DIV element):*/
+                        b.addEventListener("click", function (e) {
+                            /*insert the value for the autocomplete text field:*/
+                            inp.value = this.getElementsById("linkedin")[0].value;
+                            /*close the list of autocompleted values,
+                            (or any other open lists of autocompleted values:*/
+                            closeAllLists();
+                        });
+                        a.appendChild(b);
+                    }
+                }
+            });
+            /*execute a function presses a key on the keyboard:*/
+            inp.addEventListener("keydown", function (e) {
+                var x = document.getElementById(this.id + "autocomplete-list");
+                if (x) x = x.getElementsById("linkedindiv");
+                if (e.keyCode == 40) {
+                    /*If the arrow DOWN key is pressed,
+                    increase the currentFocus variable:*/
+                    currentFocus++;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 38) { //up
+                    /*If the arrow UP key is pressed,
+                    decrease the currentFocus variable:*/
+                    currentFocus--;
+                    /*and and make the current item more visible:*/
+                    addActive(x);
+                } else if (e.keyCode == 13) {
+                    /*If the ENTER key is pressed, prevent the form from being submitted,*/
+                    e.preventDefault();
+                    if (currentFocus > -1) {
+                        /*and simulate a click on the "active" item:*/
+                        if (x) x[currentFocus].click();
+                    }
+                }
+            });
+            function addActive(x) {
+                /*a function to classify an item as "active":*/
+                if (!x) return false;
+                /*start by removing the "active" class on all items:*/
+                removeActive(x);
+                if (currentFocus >= x.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = (x.length - 1);
+                /*add class "autocomplete-active":*/
+                x[currentFocus].classList.add("autocomplete-active");
+            }
+            function removeActive(x) {
+                /*a function to remove the "active" class from all autocomplete items:*/
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocomplete-active");
+                }
+            }
+            function closeAllLists(elmnt) {
+                /*close all autocomplete lists in the document,
+                except the one passed as an argument:*/
+                var x = document.getElementsByClassName("autocomplete-items");
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != inp) {
+                        x[i].parentNode.removeChild(x[i]);
+                    }
+                }
+            }
+            /*execute a function when someone clicks in the document:*/
+            document.addEventListener("click", function (e) {
+                closeAllLists(e.target);
+            });
+        }
+
+        /*An array containing all the country names in the world:*/
+        var linkedinlink = ['Https://www.linkedin.com/'];
+
+        /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+        autocomplete(document.getElementById("linkedin"), linkedinlink);
+    </script>
+</body>
+</html>

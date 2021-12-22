@@ -1,0 +1,317 @@
+﻿@model Portfolio.Data.User
+@{ Layout = ""; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Resume - Start Bootstrap Theme</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Portfolio/css/StyleSheet.css" rel="stylesheet" />
+    <style>
+        body {
+            /*overflow:hidden;*/
+        }
+
+        .info:hover {
+            color: white;
+        }
+
+        .info {
+            color: #ffffff80;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        #logo {
+            color: #a92330;
+            font-size: 28px;
+            margin-right: 2px;
+            margin-left: 2px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px white;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #dc3545;
+            border-radius: 10px;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #c32232;
+            }
+    </style>
+</head>
+<body id="page-top">
+    @{ var user = (Portfolio.Data.User)ViewBag.User; }
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Clarence Taylor</span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(user.PersonalImage))" alt="Personal image" width="150px" /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#Projects">Projects</a></li>
+            </ul>
+        </div>
+        <hr style="width:75%;height:1px;background-color:white;" />
+        <div class="info">
+            <span class="fa fa-calendar"></span> Date of birth · @user.DateofBirth.ToShortDateString()<br />
+            <span class="fa fa-transgender"></span> Gender · @user.Gender
+        </div>
+        <div style="background-color:#343a40;width:113%;height:85px;margin-bottom:-8px;margin-top:12px">
+            <div style="margin-top:30px">
+                <span id="logo" class="fa fa-pinterest-p"><span id="logo" class="fa fa-spinner"><span id="logo" class="fa fa-registered"><span id="logo" class="fa fa-tumblr"><span id="logo" class="fa fa-foursquare"><span id="logo" class="fa fa-circle-o"><span id="logo">L<span id="logo" class="fa fa-info-circle"><span id="logo" class="fa fa-sun-o"></span></span></span></span></span></span><span></span></span></span></span>
+            </div>
+            <div style="margin-top:-11px;">
+                <span style="color:white;font-family:cursive;font-size:9px;">Best portfolio builder.<sup class="fa fa-copyright"></sup></span>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid p-0">
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h1 class="mb-0">
+                    @user.FirstName
+                    <span class="text-primary">@user.LastName</span>
+                    <a asp-controller="User" asp-action="DeleteUser" style="float:right;" class="btn btn-danger"><span class="fa fa-trash-o"></span> Delete</a>
+                    <a asp-controller="User" asp-action="Update" style="float:right;margin-right:1%;" class="btn btn-success"><span class="fa fa-cog"></span> Update</a>
+                </h1>
+                <div class="subheading mb-5">
+                    <span class="fa fa-map-marker" style="color:#C70039"></span> Jordan, @user.Address · <span class="fa fa-phone"></span> (+962) @user.MobileNumber ·
+                    <span class="fa fa-envelope"></span><span> </span><a href="mailto:name@email.com">@user.PortfolioEmail</a>
+                </div>
+                <h2 class="mb-5" style="margin-bottom:10px!important;"><span class="fa fa-id-badge"></span> About</h2>
+                <p class="lead mb-5">@user.About</p>
+                <div class="social-icons">
+                    <a class="social-icon" style="background:#3B5998; color:white;" href="@user.FacebookURL"><i class="fa fa-facebook"></i></a>
+                    <a class="social-icon" style="background: #55ACEE; color: white;" href="@user.LinkedInURL"><i class="fa fa-linkedin"></i></a>
+                    <a class="social-icon" style="background:#007bb5;color:white" href="@user.TwitterURL"><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" asp-controller="User" asp-action="GetCV" asp-route-Id="@user.Id"><img src="/cv.png" style="width:56px;height:53px;margin-bottom:16px" class="rounded-circle" /></a>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <section class="resume-section" id="education">
+            <div class="resume-section-content">
+                <h2 class="mb-5"><span class="fa fa-mortar-board"></span> Education</h2>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-0">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-3">
+                            @{ foreach (var uu in (List<Portfolio.Data.UserUniversity>)ViewBag.UserUniversities)
+                                {
+                                    if (user.Id == uu.UserId)
+                                    {
+                                        foreach (var u in (List<Portfolio.Data.University>)ViewBag.Universities)
+                                        {
+                                            if (uu.UniversityId == u.UniversityId && uu.DegreeId == 1)
+                                            {
+                    <span class="fa fa-institution"></span> @u.UniversityName }
+            }
+        }
+    } }
+                        </h3>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-0">
+                    <div class="flex-grow-1">
+                        <div class="subheading mb-3" style="margin-left:5%;">
+                            @{ foreach (var uu in (List<Portfolio.Data.UserUniversity>)ViewBag.UserUniversities)
+                                {
+                                    if (user.Id == uu.UserId)
+                                    {
+                                        foreach (var d in (List<Portfolio.Data.Degree>)ViewBag.Degrees)
+                                        {
+                                            if (uu.DegreeId == d.DegreeId)
+                                            {
+                                                if (d.DegreeName == "Bachelor's")
+                                                {
+                    @d.DegreeName @:of @uu.MajorName
+                }
+            }
+        }
+    }
+} }
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-0" style="margin-top:2%">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-3">
+                            @{ foreach (var uu in (List<Portfolio.Data.UserUniversity>)ViewBag.UserUniversities)
+                                {
+                                    if (user.Id == uu.UserId)
+                                    {
+                                        foreach (var u in (List<Portfolio.Data.University>)ViewBag.Universities)
+                                        {
+                                            if (uu.UniversityId == u.UniversityId && uu.DegreeId == 2)
+                                            {
+                    <span class="fa fa-institution"></span> @u.UniversityName }
+            }
+        }
+    } }
+                        </h3>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-0">
+                    <div class="flex-grow-1">
+                        <div class="subheading mb-3" style="margin-left:5%;">
+                            @{ foreach (var uu in (List<Portfolio.Data.UserUniversity>)ViewBag.UserUniversities)
+                                {
+                                    if (user.Id == uu.UserId)
+                                    {
+                                        foreach (var d in (List<Portfolio.Data.Degree>)ViewBag.Degrees)
+                                        {
+                                            if (uu.DegreeId == d.DegreeId)
+                                            {
+                                                if (d.DegreeName == "Master's")
+                                                {
+                    @d.DegreeName @:of @uu.MajorName
+                }
+            }
+        }
+    }
+} }
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-0" style="margin-top:2%">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-3">
+                            @{ foreach (var uu in (List<Portfolio.Data.UserUniversity>)ViewBag.UserUniversities)
+                                {
+                                    if (user.Id == uu.UserId)
+                                    {
+                                        foreach (var u in (List<Portfolio.Data.University>)ViewBag.Universities)
+                                        {
+                                            if (uu.UniversityId == u.UniversityId && uu.DegreeId == 3)
+                                            {
+                    <span class="fa fa-institution"></span> @u.UniversityName }
+            }
+        }
+    } }
+                        </h3>
+                    </div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-0">
+                    <div class="flex-grow-1">
+                        <div class="subheading mb-3" style="margin-left:5%;">
+                            @{ foreach (var uu in (List<Portfolio.Data.UserUniversity>)ViewBag.UserUniversities)
+                                {
+                                    if (user.Id == uu.UserId)
+                                    {
+                                        foreach (var d in (List<Portfolio.Data.Degree>)ViewBag.Degrees)
+                                        {
+                                            if (uu.DegreeId == d.DegreeId)
+                                            {
+                                                if (d.DegreeName == "ph.D")
+                                                {
+                    @d.DegreeName @:of @uu.MajorName
+                }
+            }
+        }
+    }
+} }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <hr class="m-0" />
+        <section class="resume-section" id="skills">
+            <div class="resume-section-content">
+                <h2 class="mb-5"><span class="fa fa-gamepad"></span> Skills</h2>
+                <div class="subheading mb-3"><span class="fa fa-child"></span> Interpersonal skills</div>
+                <ul class="fa-ul mb-0">
+                    @{ foreach (var uit in (List<int>)ViewBag.UserInterpersonalSkills)
+                        {
+                            foreach (var Is in (List<Portfolio.Data.InterpersonalSkill>)ViewBag.InterpersonalSkills)
+                            {
+                                if (uit == Is.InterpersonalSkillId)
+                                {
+            <li>
+                <span class="fa fa-genderless"></span> @Is.InterpersonalSkillName
+            </li>
+ }
+    }
+} }
+                </ul>
+                <div class="subheading mb-3" style="margin-top:33px!important;"><span class="fa fa-laptop"></span> Technical skills</div>
+                <ul class="fa-ul mb-0">
+                    @{ foreach (var uts in (List<int>)ViewBag.UserTechnicalSkills)
+                        {
+                            foreach (var ts in (List<Portfolio.Data.TechnicalSkill>)ViewBag.TechnicalSkills)
+                            {
+                                if (uts == ts.TechnicalSkillId)
+                                {
+            <li>
+                <span class="fa fa-genderless"></span> @ts.TechnicalSkillName
+            </li>
+ }
+    }
+} }
+                </ul>
+            </div>
+        </section>
+        <hr class="m-0" />
+        <section class="resume-section" id="Projects">
+            <div class="resume-section-content">
+                <h2 class="mb-5"><span class="fa fa-paint-brush"></span> Projects</h2>
+
+
+                @{foreach (var up in (List<Portfolio.Data.Project>)ViewBag.UserProjects)
+                    {
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0"><span class="fa fa-genderless"></span> @up.ProjectName</h3>
+                        <p>@up.ProjectDescription</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width:250px;height:317px;">
+                    <img class="card-img-top" src="@String.Format("data:image/gif;base64,{0}", Convert.ToBase64String(up.ProjectImage))" style="width:100%;height:248px;" alt="Project image" />
+                    <div class="card-body" style="text-align:center">
+                        <a target="_blank" asp-controller="User" asp-action="GetProjectFile" asp-route-Id="@up.ProjectId" class="btn" style="background-color:#a92330;color:white;width:120px">View</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+        </div> } }
+
+            </div>
+        </section>
+        <hr class="m-0" />
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="~/Portfolio/js/JavaScript.js"></script>
+</body>
+</html>

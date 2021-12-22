@@ -1,0 +1,56 @@
+﻿@{Layout = "";}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        div {
+            background-color: #a923306b;
+            margin: auto;
+            width: 30%;
+            position: fixed;
+            z-index: 10;
+            margin-left: 33%;
+            margin-top: 13%;
+            height: 27%;
+            -moz-box-shadow: 3px 3px 5px 6px #ccc;
+            -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+            box-shadow: 0px 0px 15px 23px #a923306b;
+            font-family: cursive;
+            color: white;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 8%;
+            font-size: 20px;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            You don't have a portfolio to delete it!<br /><br />
+            <a href="newhome" class="btn btn-outline-danger" style="width:110px;text-decoration:none">
+                <span class="spinner-border spinner-border-sm"></span><span style="color:white">  OK</span>
+            </a>
+        </p>
+
+    </div>
+    <img src="~/img/ErrorBackground.jpg" style="width: 100%;height: 100%;-webkit-filter: blur(2px);" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+﻿@page
+@model LoginModel
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: cursive;
+            overflow: hidden;
+        }
+
+        label {
+            color: #495057
+        }
+
+        i {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px !important;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+
+        #logo {
+            font-size: 40px;
+            margin-right: 9px;
+            margin-left: 9px;
+        }
+
+        #social {
+            padding: 20px;
+            font-size: 20px;
+            text-decoration: none;
+            margin: 5px 2px;
+            border-radius: 50%;
+            color: white;
+        }
+
+            #social:hover {
+                opacity: 0.7;
+            }
+
+        #social-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        #social-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        #social-linkedin {
+            background: #007bb5;
+            color: white;
+        }
+
+        #social-instagram {
+            background: #C13584;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-4" style="background-color:#a92330;color:white;text-align:center;">
+            <div style="margin-top:20%;margin-bottom:79%">
+                <div style="margin-left:6%;">
+                    <span id="logo" class="fa fa-pinterest-p"><span id="logo" class="fa fa-spinner"><span id="logo" class="fa fa-registered"><span id="logo" class="fa fa-tumblr"><span id="logo" class="fa fa-foursquare"><span id="logo" class="fa fa-circle-o"><span id="logo">L<span id="logo" class="fa fa-info-circle"><span id="logo" class="fa fa-sun-o"></span></span></span></span></span></span><span></span></span></span></span>
+                    Best portfolio builder.<sup class="fa fa-copyright"></sup>
+                </div>
+            </div>
+            <div style="margin-bottom:25%">
+                <div style="text-align:center;">
+                    <a href="https://www.facebook.com/nasserhamodeh" id="social" class="fa fa-facebook"></a><a href="https://www.linkedin.com/in/nasser-hammodeh-0b74b319a" id="social" class="fa fa-linkedin"></a><a href="https://www.twitter.com/nasser_hammodeh" id="social" class="fa fa-twitter"></a><a href="https://www.instagram.com/nasser_hammodeh" id="social" class="fa fa-instagram"></a>
+                </div>
+                <h4 style="text-align:center;margin-top:3%;">Contact us</h4>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+                <section>
+                    <form id="account" method="post" style="margin-top:25%;margin-left:10%;">
+                        <div style="text-align:center;font-size:45px;">
+                            Log in
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Log in</button>
+                        </div>
+                        <div class="form-group">
+                            <p>
+                                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                            </p>
+                        </div>
+                    </form>
+                </section>
+        </div>
+        <div class="col-lg-4"></div>
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
+    </div>
+</body>
+</html>
